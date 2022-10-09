@@ -1,0 +1,23 @@
+{
+  "name": "auth-linking-example",
+  "displayName": "AuthLinking Example",
+  "expo": {
+    "name": "auth-linking-example",
+    "slug": "auth-linking-example",
+    "description": "Example app for auth-linking",
+    "privacy": "public",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "jsEngine": "hermes",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
