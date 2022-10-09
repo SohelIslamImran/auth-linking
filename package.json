@@ -1,7 +1,7 @@
 {
   "name": "auth-linking",
   "version": "0.1.0",
-  "description": "test",
+  "description": "Deep linking with Authentication Flow",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -22,18 +22,16 @@
     "!**/__mocks__"
   ],
   "scripts": {
-    "test": "jest",
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepare": "bob build",
-    "release": "release-it",
-    "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn && yarn example pods"
+    "release": "release-it"
   },
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "auth-linking"
   ],
   "repository": "https://github.com/SohelIslamImran/auth-linking",
   "author": "Sohel Islam Imran <sohelislamimran@gmail.com> (https://github.com/SohelIslamImran)",
@@ -58,11 +56,10 @@
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^28.1.1",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
-    "react": "17.0.2",
-    "react-native": "0.68.2",
+    "react": "*",
+    "react-native": "*",
     "react-native-builder-bob": "^0.18.3",
     "release-it": "^15.0.0",
     "typescript": "^4.5.2"
@@ -147,5 +144,10 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "expo-linking": "*",
+    "firebase": "*",
+    "react-native-mmkv": "^2.4.3"
   }
 }
