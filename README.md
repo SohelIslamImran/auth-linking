@@ -27,7 +27,7 @@ import AuthLinkingProvider from "auth-linking";
 
 const App = () => {
   return (
-    <AuthLinkingProvider theme="light">
+    <AuthLinkingProvider onAuthChange={onAuthChange}>
       {/* Your app components */}
     </AuthLinkingProvider>
   );
