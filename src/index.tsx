@@ -1,20 +1,13 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import * as Linking from 'expo-linking';
 
 import type { AuthLinkingContextType, AuthLinkingProviderProps } from './types';
 
 const AuthLinkingContext = createContext<AuthLinkingContextType | null>(null);
 
-const authChange = () => {
-  return new Promise((resolve, reject) => {
-    onAuthStateChanged(getAuth(), resolve, reject);
-  });
-};
-
 const AuthLinkingProvider = ({
   children,
-  onAuthChange = authChange,
+  onAuthChange,
 }: AuthLinkingProviderProps) => {
   const deepLink = Linking.useURL();
   const [deepLinkURL, setURL] = useState<null | string>(null);
@@ -33,7 +26,20 @@ const AuthLinkingProvider = ({
   );
 };
 
-const useAutoRedirect = () => {
+/**
+ * Call this hook inside a screen that will render after all auth flow is completed. So this hook will automatically redirect to the deep link through which the app is opened.
+* @example
+    import { useAutoRedirectToDeepLink } from "auth-linking";
+    ...
+    const Home = () => {
+      useAutoRedirectToDeepLink()
+
+      return (
+        <View>{...}</View>
+      );
+    };
+ */
+const useAutoRedirectToDeepLink = () => {
   // @ts-ignore
   const { deepLinkURL, setURL } = useContext(AuthLinkingContext);
 
@@ -44,5 +50,5 @@ const useAutoRedirect = () => {
   }, [deepLinkURL]);
 };
 
-export { useAutoRedirect };
+export { useAutoRedirectToDeepLink };
 export default AuthLinkingProvider;

@@ -1,10 +1,9 @@
 import type React from 'react';
-import type { User } from 'firebase/auth';
 
 export interface AuthLinkingProviderProps {
   children: React.ReactElement | React.ReactElement[] | React.ReactNode;
   /**
-   * A function that should return a promise with the user or null (if the user is not logged in)
+   * A function that should return a promise with the user or truthy value (if logged in) and null or falsy (if the user is not logged in).
    * @example
       const onAuthChange = () => {
         return new Promise((resolve, reject) => {
@@ -13,7 +12,7 @@ export interface AuthLinkingProviderProps {
       };
    };
    */
-  onAuthChange: () => Promise<unknown> | Promise<User>;
+  onAuthChange: () => Promise<unknown>;
 }
 
 export type AuthLinkingContextType = {

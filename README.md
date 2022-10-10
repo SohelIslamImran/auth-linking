@@ -1,6 +1,6 @@
 # auth-linking
 
-###### Deep linking with Authentication Flow
+###### Auto Deep linking with Authentication Flow
 
 Deep linking is very easy to use with authentication. But some people take it hard way. So this package will help you to achieve the easiest way to handle Deep linking with Authentication Flow.
 
@@ -38,24 +38,30 @@ export default App;
 
 ### `onAuthChange` prop
 
-You can provide a `onAuthChange` prop to `AuthLinkingProvider`. This a function that should return a promise with the user or null (if the user is not logged in).
-_If you are using `firebase js sdk` you don't need to provide this prop._
+You need to provide an `onAuthChange` prop to `AuthLinkingProvider`. This a function that should return a promise with the user or truthy value (if logged in) and null or falsy (if the user is not logged in).
 
 ```js
+    const onAuthChange = () => {
+      return new Promise((resolve, reject) => {
+        onAuthStateChanged(auth, resolve, reject);
+      });
+    };
+    ...
+
     <AuthLinkingProvider onAuthChange={onAuthChange}>
 ```
 
-### useAutoRedirect
+### useAutoRedirectToDeepLink
 
 Call this hook inside a screen that will render after all auth flow is completed. So this hook will automatically redirect to the deep link through which the app is opened.
 
 ```js
-import { useAutoRedirect } from "auth-linking";
+import { useAutoRedirectToDeepLink } from "auth-linking";
 
 ...
 
 const Home = () => {
-    useAutoRedirect()
+  useAutoRedirectToDeepLink()
 
   return (
     <View>{...}</View>
