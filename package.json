@@ -1,6 +1,6 @@
 {
   "name": "auth-linking",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Auto Deep linking with Authentication Flow",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
